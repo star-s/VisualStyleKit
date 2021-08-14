@@ -11,6 +11,10 @@ public extension TextStyle {
 	
 	// MARK: - Font
 	
+	var font: UIFont? {
+		make().font
+	}
+	
 	func font(_ font: UIFont) -> TextStyle {
 		TextStyle(parent: self) {
 			$0[.font] = font
@@ -43,6 +47,14 @@ public extension TextStyle {
 	}
 	
 	// MARK: - Color
+	
+	var foregroundColor: UIColor? {
+		make().foregroundColor
+	}
+	
+	var backgroundColor: UIColor? {
+		make().backgroundColor
+	}
 	
 	func foregroundColor(_ color: UIColor) -> TextStyle {
 		TextStyle(parent: self) {

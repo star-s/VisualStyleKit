@@ -26,6 +26,6 @@ extension WebColor: UiKitColorConvertible {
 
 extension ResourcePair: UiKitColorConvertible where T: UiKitColorConvertible {
     public var uiColor: UIColor {
-        self[ApplicationTheme.current.colorTheme].uiColor
+		self[UIApplication.shared.applicationTheme.colorTheme].uiColor
     }
 }

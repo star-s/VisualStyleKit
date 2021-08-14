@@ -81,4 +81,18 @@ public extension TextStyle {
             paragraph(&$0).lineBreakMode = lineBreakMode
         }
     }
+	
+	func minLineHeight(_ minLineHeight: CGFloat) -> TextStyle {
+		TextStyle(parent: self) {
+			paragraph(&$0).minimumLineHeight = minLineHeight
+		}
+	}
+	
+	// MARK: -
+	
+	func underline(_ underline: NSUnderlineStyle) -> TextStyle {
+		TextStyle(parent: self) {
+			$0[.underlineStyle] = underline.rawValue
+		}
+	}
 }

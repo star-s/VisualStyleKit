@@ -9,16 +9,13 @@ import UIKit
 
 public extension ApplicationTheme {
     var colorTheme: ColorTheme {
-        switch self {
-        case .forced(let theme):
-            return theme
-        default:
-            break
-        }
-        guard #available(iOS 12.0, tvOS 10.0, *) else {
+		if case .forced(let theme) = self {
+			return theme
+		}
+        guard #available(iOS 13.0, tvOS 13.0, *) else {
             return .light
         }
-        switch UIScreen.main.traitCollection.userInterfaceStyle {
+		switch UITraitCollection.current.userInterfaceStyle {
         case .dark:
             return .dark
         default:

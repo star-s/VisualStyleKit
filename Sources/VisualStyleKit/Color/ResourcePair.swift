@@ -31,3 +31,27 @@ extension ResourcePair: ExpressibleByNilLiteral where T: ExpressibleByNilLiteral
 		self.init(nil)
 	}
 }
+
+extension ResourcePair: ExpressibleByUnicodeScalarLiteral where T: ExpressibleByUnicodeScalarLiteral {
+    public typealias UnicodeScalarLiteralType = T.UnicodeScalarLiteralType
+    
+    public init(unicodeScalarLiteral value: UnicodeScalarLiteralType) {
+        self.init(.init(unicodeScalarLiteral: value))
+    }
+}
+
+extension ResourcePair: ExpressibleByExtendedGraphemeClusterLiteral where T: ExpressibleByExtendedGraphemeClusterLiteral {
+    public typealias ExtendedGraphemeClusterLiteralType = T.ExtendedGraphemeClusterLiteralType
+    
+    public init(extendedGraphemeClusterLiteral value: ExtendedGraphemeClusterLiteralType) {
+        self.init(.init(extendedGraphemeClusterLiteral: value))
+    }
+}
+
+extension ResourcePair: ExpressibleByStringLiteral where T: ExpressibleByStringLiteral {
+    public typealias StringLiteralType = T.StringLiteralType
+    
+    public init(stringLiteral value: StringLiteralType) {
+        self.init(.init(stringLiteral: value))
+    }
+}

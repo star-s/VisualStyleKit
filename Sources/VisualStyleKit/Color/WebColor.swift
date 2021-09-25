@@ -59,14 +59,17 @@ extension WebColor: LosslessStringConvertible {
     }
     
     public var description: String {
-        [alpha, red, green, blue].compactMap({ $0 }).map({ UInt8($0 * 255.0) }).reduce(into: "#", { $0 = $0.appendingFormat("%02X", $1) })
+        [alpha, red, green, blue]
+			.compactMap({ $0 })
+			.map({ UInt8($0 * 255.0) })
+			.reduce(into: "#", { $0 = $0.appendingFormat("%02X", $1) })
     }
 }
 
 extension WebColor: ExpressibleByStringLiteral {
     
-    public init(stringLiteral value: String) {
-        guard let color = WebColor(value) else {
+    public init(stringLiteral value: StaticString) {
+		guard let color = WebColor(value.description) else {
             preconditionFailure("Color value \(value) is invalid. It should be a hex value of the form #RBG, #ARGB, #RRGGBB, or #AARRGGBB")
         }
         self = color

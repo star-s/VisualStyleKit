@@ -95,4 +95,10 @@ public extension TextStyle {
 			$0[.underlineStyle] = underline.rawValue
 		}
 	}
+	
+	func link(_ url: URL) -> TextStyle {
+		TextStyle(parent: self) {
+			$0[.link] = url
+		}
+	}
 }
